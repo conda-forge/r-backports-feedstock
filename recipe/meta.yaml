@@ -1,5 +1,4 @@
 {% set version = '1.1.2' %}
-
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
@@ -10,8 +9,8 @@ package:
 source:
   fn: backports_{{ version }}.tar.gz
   url:
-    - https://cran.r-project.org/src/contrib/backports_{{ version }}.tar.gz
-    - https://cran.r-project.org/src/contrib/Archive/backports/backports_{{ version }}.tar.gz
+    - {{ cran_mirror }}/src/contrib/backports_{{ version }}.tar.gz
+    - {{ cran_mirror }}/src/contrib/Archive/backports/backports_{{ version }}.tar.gz
   sha256: e85b93675c6703e1da790dce1f8fb61f27b87e92722c7f0909273ed5074cb456
 
 build:
@@ -24,25 +23,28 @@ build:
 
 requirements:
   build:
-    - posix                # [win]
-    - {{ compiler('c') }}        # [unix]
-    - {{ compiler('m2w64_c') }}  # [win]
+    - {{ compiler('c') }}        # [not win]
+    - {{native}}toolchain        # [win]
+    - {{posix}}filesystem        # [win]
+    - {{posix}}make
+    - {{posix}}sed               # [win]
+    - {{posix}}coreutils         # [win]
+    - {{posix}}zip               # [win]
   host:
     - r-base
-
   run:
     - r-base
+    - {{native}}gcc-libs         # [win]
 
 test:
   commands:
-    - $R -e "library('backports')"  # [not win]
+    - $R -e "library('backports')"           # [not win]
     - "\"%R%\" -e \"library('backports')\""  # [win]
 
 about:
   home: https://github.com/mllg/backports
   license: GPL-2
-  summary: |
-    Implementations of functions which have been introduced in R since version 3.0.0.
+  summary: Implementations of functions which have been introduced in R since version 3.0.0.
     The backports are conditionally exported which results in R resolving the function
     names to the version shipped with R (if available) and uses the implemented backports
     as fallback. This way package developers can make use of the new functions without
