@@ -1,4 +1,4 @@
-{% set version = "1.4.0" %}
+{% set version = "1.4.1" %}
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
@@ -10,7 +10,7 @@ source:
   url:
     - {{ cran_mirror }}/src/contrib/backports_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/backports/backports_{{ version }}.tar.gz
-  sha256: e7611565d24a852ad8b08579a7c67ad9121c1bda148bade98c7bec686e8dabbf
+  sha256: 845c3c59fbb05e5a892c4231b955a0afdd331d82b7cc815bcff0672023242474
 
 build:
   merge_build_host: true  # [win]
