@@ -3,6 +3,7 @@ About r-backports-feedstock
 
 Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/r-backports-feedstock/blob/main/LICENSE.txt)
 
+
 About r-backports
 -----------------
 
@@ -11,6 +12,7 @@ Home: https://github.com/r-lib/backports
 Package license: GPL-2.0-or-later
 
 Summary:  Functions introduced or changed since R v3.0.0 are re-implemented in this package. The backports are conditionally exported in order to let R resolve the function name to either the implemented backport, or the respective base version, if available. Package developers can make use of new functions or arguments by selectively importing specific backports to support older installations.
+
 About r-backports
 -----------------
 
@@ -195,7 +197,7 @@ available continuous integration services. Thanks to the awesome service provide
 [CircleCI](https://circleci.com/), [AppVeyor](https://www.appveyor.com/),
 [Drone](https://cloud.drone.io/welcome), and [TravisCI](https://travis-ci.com/)
 it is possible to build and upload installable packages to the
-[conda-forge](https://anaconda.org/conda-forge) [Anaconda-Cloud](https://anaconda.org/)
+[conda-forge](https://anaconda.org/conda-forge) [anaconda.org](https://anaconda.org/)
 channel for Linux, Windows and OSX respectively.
 
 To manage the continuous integration and simplify feedstock maintenance
